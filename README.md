@@ -1,6 +1,8 @@
 # hackatron
 
 ## Overview
+This is a fork copy of my nwHacks project!
+
 Hackatron is our rendition of the retro game, Pacman. This project was developed as our submission for nwHacks 2016.
 
 ## Accomplishments
@@ -17,7 +19,7 @@ Within 24 hours, our team was able to:
 ## Installation
 Clone the project:
 ```
-git clone https://github.com/nwHacks2016/hackatron.git
+git clone https://github.com/mingchia-andy-liu/hackatron.git
 ```
 
 Install dependencies:
