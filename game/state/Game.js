@@ -35,16 +35,7 @@ function guid() {
 }
 
 Hackatron.Game.prototype = {
-    preload: function() {
-        this.load.tilemap('map', 'assets/tiles1.json', null, Phaser.Tilemap.TILED_JSON);
-        this.load.image('tiles', 'assets/part2_tileset.png');
-        this.load.spritesheet('tron', 'assets/tron.png', 32, 32, 12);
-        this.load.spritesheet('ghost', 'assets/ghost.png', 32, 32, 12);
-
-        this.load.json('JSONobj', 'assets/tiles1.json');
-        this.load.image('pellet', 'assets/pellet.png');
-        
-        // this.load.image('poop', 'assets/poop.png');
+    preload: function() {       
     },
 
     create: function() {
