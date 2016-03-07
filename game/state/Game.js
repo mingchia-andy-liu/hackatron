@@ -1,7 +1,4 @@
-Hackatron = {
-    score: 0
-};
-
+var Hackatron = {};
 Hackatron.Game = function(game) {
     this.player;
 };
@@ -14,8 +11,6 @@ var upKey;
 var downKey;
 var leftKey;
 var rightKey;
-// var emitter1;
-// var emitter2;
 var tilemapData;
 var enemyDirection;
 var posX = 0;
@@ -89,17 +84,6 @@ Hackatron.Game.prototype = {
             ghost1.character.scale.x = 0.8;
             ghost1.character.scale.y = 0.8;
             this.game.physics.arcade.enable([tron1.character, ghost1.character], Phaser.Physics.ARCADE);
-
-    		// emitter2 = this.add.emitter(ghost1.character.x, ghost1.character.y, 50);
-    		// emitter2.width = 5;
-    		// emitter2.makeParticles('poop');
-    		// emitter2.setXSpeed();
-    		// emitter2.setYSpeed();
-    		// emitter2.setRotation();
-    		// emitter2.setAlpha(1, 0.4, 800);
-    		// emitter2.setScale(0.05, 0.2, 0.05, 0.2, 2000, Phaser.Easing.Quintic.Out);
-    		// emitter2.start(false,250, 1);
-      //       ghost1.character.emitter = emitter2;
         }
 
         tron1.character.scale.x = 0.8;
@@ -107,39 +91,7 @@ Hackatron.Game.prototype = {
 
         // Collision
         this.game.physics.arcade.enable(this.layer);
-        this.map.setCollision(18);
-        this.map.setCollision(88);
-        this.map.setCollision(54);
-        this.map.setCollision(89);
-        this.map.setCollision(53);
-        this.map.setCollision(52);
-
-
-        // emitter1 = this.add.emitter(tron1.character.x, tron1.character.y, 50);
-        // emitter1.width = 5;
-        // emitter1.makeParticles('blueball');
-        // emitter1.setXSpeed();
-        // emitter1.setYSpeed();
-        // emitter1.setRotation();
-        // emitter1.setAlpha(1, 0.4, 800);
-        // emitter1.setScale(0.05, 0.2, 0.05, 0.2, 2000, Phaser.Easing.Quintic.Out);
-        // emitter1.start(false,250, 1);
-        
-        // emitter2 = this.add.emitter(ghost1.character.x, ghost1.character.y, 50);
-        // emitter2.width = 5;
-        // emitter2.makeParticles('poop');
-        // emitter2.setXSpeed();
-        // emitter2.setYSpeed();
-        // emitter2.setRotation();
-        // emitter2.setAlpha(1, 0.4, 800);
-        // emitter2.setScale(0.05, 0.2, 0.05, 0.2, 2000, Phaser.Easing.Quintic.Out);
-        // emitter2.start(false,250, 1);
-
-        // tron1.character.emitter = emitter1;
-
-        // Add score text
-        this.scoreText = this.add.text(this.world.width - 128, 0, 'Score: 0');
-        this.scoreText.addColor('White', 0);
+        this.map.setCollision([18, 52, 53, 54, 88, 89]);
 
         this.currentPlayerXtile = 0;
         this.currentPlayerYtile = 0;
@@ -389,18 +341,12 @@ Hackatron.Game.prototype = {
         if (character.upKey.isDown) {
             character.animations.play('walkUp', 3, false);
             character.body.velocity.y = -speed;
-            // character.emitter.x = character.x + 15;
-            // character.emitter.y = character.y + 35;
         } else if (character.downKey.isDown) {
             character.animations.play('walkDown', 3, false);
-            character.body.velocity.y = speed;
-            // character.emitter.x = character.x + 15;
-            // character.emitter.y = character.y + -5;            
+            character.body.velocity.y = speed;         
         } else if (character.leftKey.isDown) {
             character.animations.play('walkLeft', 3, false);
             character.body.velocity.x = -speed;
-            // character.emitter.x = character.x + 30;
-            // character.emitter.y = character.y + 15;            
             if (character.x < 0) {
                 character.x = this.world.width;
             }
@@ -410,8 +356,6 @@ Hackatron.Game.prototype = {
             if (character.x > this.world.width) {
                 character.x = 0;
             }
-            // character.emitter.x = character.x;
-            // character.emitter.y = character.y + 15;    
         }
 
         return {x: character.x, y: character.y};
@@ -463,8 +407,6 @@ Hackatron.Game.prototype = {
             player.tron.character.y = data.tron_y;
             // ghost1.character.x = data.ghost_x;
             // ghost1.character.y = data.ghost_y;
-            // emitter2.x = data.ghost_x;
-            // emitter2.y = data.ghost_y;
         }.bind(this));
 
         this.socket.on('gameStarted', function(data) {
